@@ -21,10 +21,10 @@ const WeatherBox = () => {
       if (res.status === 200) {
         res.json().then((data) => {
           setWeatherDate({
-            city: data.city.name,
-            temp: data.list[0].main.temp / 10.0,
-            icon: data.list[0].weather[0].icon,
-            description: data.list[0].weather[0].main
+            city: data.city.name ? data.city.name : 'City name',
+            temp: (data.list[0].main.temp ? data.list[0].main.temp : 0) / 10.0,
+            icon: data.list[0].weather[0].icon ? data.list[0].weather[0].icon : 'icon',
+            description: data.list[0].weather[0].main ? data.list[0].weather[0].main : 'description'
           });
           setCall(false);
         });
